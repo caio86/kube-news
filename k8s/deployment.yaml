@@ -60,7 +60,7 @@ spec:
   selector:
     app: kube-news
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 8080
     # nodePort: 30000
   type: LoadBalancer
