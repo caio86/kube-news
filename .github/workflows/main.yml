@@ -17,6 +17,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           
       - name: Extract Docker metadata
+        id: metadata
         uses: docker/metadata-action@v4.6.0
         with:
           images: c410l/kube-news
@@ -27,4 +28,4 @@ jobs:
           context: ./src
           file: ./docker/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.metadata.outputs.tags }}
