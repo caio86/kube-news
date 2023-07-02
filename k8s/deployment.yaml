@@ -14,10 +14,6 @@ spec:
       containers:
       - name: postgres
         image: postgres
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         envFrom:
           - configMapRef:
               name: pg-configs
@@ -50,10 +46,6 @@ spec:
       containers:
       - name: kube-news
         image: c410l/kube-news
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         envFrom:
         - configMapRef:
             name: app-configs
@@ -69,5 +61,6 @@ spec:
     app: kube-news
   ports:
   - port: 8080
-    nodePort: 30000
-  type: NodePort
+    targetPort: 8080
+    # nodePort: 30000
+  type: LoadBalancer
